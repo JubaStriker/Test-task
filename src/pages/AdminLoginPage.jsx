@@ -5,6 +5,8 @@ import * as yup from "yup";
 import MkdSDK from "../utils/MkdSDK";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../authContext";
+import SnackBar from "../components/SnackBar";
+import { showToast } from "../globalContext";
 
 const AdminLoginPage = () => {
   const schema = yup
@@ -38,8 +40,11 @@ const AdminLoginPage = () => {
 
     }
     else {
-      setErrors("")
       navigate('/admin/dashboard')
+
+      setErrors("")
+
+
     }
 
   };
