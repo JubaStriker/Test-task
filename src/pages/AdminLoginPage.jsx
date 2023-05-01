@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -14,7 +14,7 @@ const AdminLoginPage = () => {
     })
     .required();
 
-  const { dispatch } = React.useContext(AuthContext);
+  const { dispatch, state } = React.useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -25,12 +25,24 @@ const AdminLoginPage = () => {
     resolver: yupResolver(schema),
   });
 
+  const [error, setErrors] = useState("")
+
   const onSubmit = async (data) => {
     let sdk = new MkdSDK();
-    //TODO
+    // TODO
     const { login } = sdk;
     const loginData = await login(data.email, data.password, "admin");
+    dispatch({ type: 'LOGIN', token: loginData.token, role: loginData.role });
     console.log(loginData)
+    if (loginData.message) {
+      setErrors(loginData.message)
+
+    }
+    else {
+      setErrors("")
+      navigate('/admin/dashboard')
+    }
+
   };
 
   return (
@@ -72,6 +84,7 @@ const AdminLoginPage = () => {
           />
           <p className="text-red-500 text-xs italic">
             {errors.password?.message}
+            {error}
           </p>
         </div>
         <div className="flex items-center justify-between">
