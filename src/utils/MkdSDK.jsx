@@ -31,7 +31,7 @@ export default function MkdSDK() {
         body: JSON.stringify(credentials)
       });
       const data = await response.json();
-      console.log(data);
+
       fetch(`https://reacttask.mkdlabs.com/v2/api/lambda/check`, {
         method: 'POST',
         headers: {
@@ -42,9 +42,10 @@ export default function MkdSDK() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log("check", data);
         })
-      console.log("after", data);
+
+
+      return data;
 
     }
     catch (error) {
@@ -130,7 +131,7 @@ export default function MkdSDK() {
           'content-type': 'application/json',
           'x-project': 'cmVhY3R0YXNrOmQ5aGVkeWN5djZwN3p3OHhpMzR0OWJtdHNqc2lneTV0Nw=='
         },
-        body: JSON.stringify(credentials)
+        body: JSON.stringify(role)
       });
       const data = await response.json();
       console.log(data);

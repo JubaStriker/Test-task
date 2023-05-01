@@ -29,7 +29,8 @@ const AdminLoginPage = () => {
     let sdk = new MkdSDK();
     //TODO
     const { login } = sdk;
-    await login(data.email, data.password, "admin");
+    const loginData = await login(data.email, data.password, "admin");
+    console.log(loginData)
   };
 
   return (
