@@ -9,14 +9,16 @@ const AdminDashboardPage = () => {
   const token = state.token;
 
 
+  const [page, setPage] = useState(1)
+
   const body = {
     "payload": {},
-    "page": 1,
+    "page": page,
     "limit": 10
   }
 
 
-  const [page, setPage] = useState(1)
+
   const [pageData, setPageData] = useState()
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const AdminDashboardPage = () => {
         setPageData(data.list)
       })
 
-  }, [])
+  }, [page])
   console.log(page)
 
   const handleNext = (page) => {
@@ -116,7 +118,8 @@ const AdminDashboardPage = () => {
                 </table>
                 <div className="flex justify-between mt-10 mb-20">
                   <button onClick={() => handlePrev(page)} className="btn text-slate-700 rounded-xl rounded-l-3xl rounded-r-3xl px-5 py-2 bg-[#9BFF00]">Prev</button>
-                  <button onClick={() => handleNext(page)} disabled={page === 2} className="btn text-slate-700 rounded-xl rounded-l-3xl rounded-r-3xl px-5 py-2 bg-[#9BFF00]">Next</button>
+                  <h1 className="text-white">Page: {page}</h1>
+                  <button onClick={() => handleNext(page)} disabled={page === 0} className="btn text-slate-700 rounded-xl rounded-l-3xl rounded-r-3xl px-5 py-2 bg-[#9BFF00]">Next</button>
                 </div>
               </div>
             </div>
