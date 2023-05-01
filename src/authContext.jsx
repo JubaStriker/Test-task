@@ -16,8 +16,6 @@ const reducer = (state, action) => {
       //TODO
       const token = action.token
       const role = action.role
-      console.log(token, role)
-      console.log(state)
       state.role = role;
       state.token = token;
       state.isAuthenticated = true;

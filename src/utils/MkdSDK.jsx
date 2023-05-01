@@ -32,17 +32,17 @@ export default function MkdSDK() {
       });
       const data = await response.json();
 
-      fetch(`https://reacttask.mkdlabs.com/v2/api/lambda/check`, {
-        method: 'POST',
-        headers: {
-          'x-project': 'cmVhY3R0YXNrOmQ5aGVkeWN5djZwN3p3OHhpMzR0OWJtdHNqc2lneTV0Nw==',
-          'Bearer': `${data.token}`
-        },
-        body: JSON.stringify({ "role": "admin" })
-      })
-        .then(res => res.json())
-        .then(data => {
-        })
+      // fetch(`https://reacttask.mkdlabs.com/v2/api/lambda/check`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'x-project': 'cmVhY3R0YXNrOmQ5aGVkeWN5djZwN3p3OHhpMzR0OWJtdHNqc2lneTV0Nw==',
+      //     'Bearer': `${data.token}`
+      //   },
+      //   body: JSON.stringify({ "role": "admin" })
+      // })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //   })
 
 
       return data;

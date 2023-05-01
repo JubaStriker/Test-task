@@ -33,7 +33,6 @@ const AdminLoginPage = () => {
     const { login } = sdk;
     const loginData = await login(data.email, data.password, "admin");
     dispatch({ type: 'LOGIN', token: loginData.token, role: loginData.role });
-    console.log(loginData)
     if (loginData.message) {
       setErrors(loginData.message)
 
