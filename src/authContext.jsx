@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import MkdSDK from "./utils/MkdSDK";
 
+
 export const AuthContext = React.createContext();
 
 const initialState = {
@@ -24,6 +25,7 @@ const reducer = (state, action) => {
       };
     case "LOGOUT":
       localStorage.clear();
+
       return {
         ...state,
         isAuthenticated: false,

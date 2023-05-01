@@ -1,11 +1,11 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { AuthContext } from "../authContext";
+import { useNavigate } from "react-router";
 
 const AdminDashboardPage = () => {
 
-  const { state } = React.useContext(AuthContext);
+  const { state, dispatch } = React.useContext(AuthContext);
   const token = state.token;
   console.log(token)
 
@@ -38,11 +38,22 @@ const AdminDashboardPage = () => {
 
   }, [])
 
+  const handleLogOut = () => {
+
+    dispatch({ type: 'LOGOUT' });
+    const navigate = useNavigate()
+    navigate('/')
+
+  }
+
 
   return (
     <>
-      <div className="w-full flex justify-center items-center text-7xl h-screen text-gray-700 ">
-        Dashboard
+      <div className="w-full h-screen bg-black py-10 px-20 ">
+        <div className="flex justify-between">
+          <h1 className="text-3xl font-extrabold text-white">APP</h1>
+          <button onClick={handleLogOut} className="btn text-slate-700 rounded-xl rounded-l-3xl rounded-r-3xl px-5 py-2 bg-[#9BFF00]">Log out</button>
+        </div>
       </div>
     </>
   );
